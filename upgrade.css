@@ -1,0 +1,124 @@
+/* MEY FASHION V6 — lapisan animasi (ref: Kebab Sumatera + Amel UMKM). Font lokal, aset offline. */
+@font-face{font-family:'Bricolage MF';src:url(assets/fonts/bricolage-800.ttf) format('truetype');font-weight:800;font-display:swap}
+@font-face{font-family:'DM Sans MF';src:url(assets/fonts/dm-sans-400.ttf) format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'DM Sans MF';src:url(assets/fonts/dm-sans-700.ttf) format('truetype');font-weight:700;font-display:swap}
+:root{--display:'Bricolage MF','DM Sans MF',Impact,sans-serif;--font:'DM Sans MF','DM Sans',Arial,sans-serif}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
+html.mf-on{scroll-behavior:auto}
+#preloader{display:none!important}
+/* ---- Loader: tirai ruang ganti (ref amel: hitung 0-100, cup terbelah, biji meledak) ---- */
+#curtain{position:fixed;inset:0;z-index:200;pointer-events:all;overflow:hidden}
+.cp{position:absolute;top:0;bottom:0;width:50.4%;background:#0b0813}
+.cp-l{left:0;box-shadow:inset -2px 0 0 #ff9fc8aa}.cp-r{right:0;box-shadow:inset 2px 0 0 #ff9fc8aa}
+.cu-core{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:14px;z-index:2}
+.cu-logo{width:min(34vw,150px);aspect-ratio:1;object-fit:contain;border-radius:50%;filter:drop-shadow(0 0 22px #ff9fc880)}
+.cu-num{font:800 clamp(56px,12vw,120px)/1 var(--display);color:#fff2e4;letter-spacing:-.03em}.cu-num small{font-size:.35em;color:#ff9fc8}
+.cu-cap{font-size:11px;letter-spacing:.3em;color:#e9c9d8;font-weight:700}
+.cu-burst{position:absolute;inset:0;z-index:3;pointer-events:none}.cu-burst i{position:absolute;left:50%;top:50%;font-style:normal;line-height:1}
+/* ---- Hero: kata raksasa per look, cincin putar, riak warna (ref kebab) ---- */
+.hero-wash,.hero-ripple{position:absolute;inset:0;pointer-events:none;z-index:1}
+.hero-wash{opacity:.55}
+.hero-ripple{clip-path:circle(0 at 50% 50%);opacity:.55}
+.hero-ring{position:absolute;z-index:1;border:2px solid #ffffffaa;border-radius:50%;pointer-events:none;opacity:0;width:100px;height:100px}
+.hero-halo{position:absolute;z-index:2;left:0;top:0;border-radius:50%;border:2px dashed #ffffff66;pointer-events:none;animation:mfSpin 46s linear infinite;transition:opacity .5s}
+.hero-halo::after{content:"";position:absolute;inset:11%;border-radius:50%;border:2px solid #ffffff33}
+@keyframes mfSpin{to{rotate:360deg}}
+.hero-word{position:absolute;z-index:2;left:0;top:0;pointer-events:none;white-space:nowrap;font:800 clamp(64px,13vw,210px)/.9 var(--display);letter-spacing:-.04em;color:transparent;-webkit-text-stroke:2px #ffffffaa;rotate:-6deg;transition:opacity .4s}
+.hero[data-state=detail] .hero-word,.hero[data-state=detail] .hero-halo{opacity:0}
+.hero h1{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.95}.hero h1 em{font-style:normal;color:var(--pink)}
+/* ---- Judul: kata naik dari topeng + marker menyapu (ref kebab) ---- */
+.sw .w{display:inline-block;overflow:hidden;vertical-align:top;padding:.04em 0 .14em;margin-bottom:-.14em}
+.sw .wi{display:inline-block;transform:translateY(112%)}
+.sw.in .wi{transform:none;transition:transform .9s cubic-bezier(.2,.9,.25,1) calc(var(--w)*.06s)}
+.section-title h2,.about-layout h2,.lookbook-text h2,.closer h2{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.98;}
+.section-title h2 em,.about-layout h2 em,.lookbook-text h2 em,.closer h2 em{position:relative;display:inline-block;font-style:normal;z-index:0;padding:0 .14em;margin:0 -.04em;color:#2a0f1e!important;-webkit-text-fill-color:#2a0f1e!important;background:none!important}
+.section-title h2 em::before,.about-layout h2 em::before,.lookbook-text h2 em::before,.closer h2 em::before{content:"";position:absolute;inset:.1em -.04em .02em;z-index:-1;background:var(--pink);border-radius:.14em;transform:skewX(-7deg) scaleX(0);transform-origin:left;transition:transform .85s cubic-bezier(.7,0,.2,1) .35s}
+.sw.in em::before{transform:skewX(-7deg) scaleX(1)}
+/* ---- Gelombang tiap section (ref kebab wave-pro) ---- */
+.wl-layer{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;--wl-a:#ff9fc80f;--wl-b:#ffffff08;--wl-c:#ff6f9d0c}
+.wl-layer svg{position:absolute;left:-8%;top:-4%;width:116%;height:108%;transform:translate3d(var(--wx,0px),var(--wy,0px),0);will-change:transform}
+.wf.a{fill:var(--wl-a)}.wf.b{fill:var(--wl-b)}.wf.c{fill:var(--wl-c)}
+.order-section .wl-layer,.location-section .wl-layer{--wl-a:#ff9fc826;--wl-b:#ffffff60;--wl-c:#ff6f9d18}
+.mf-wave{position:relative}.mf-wave>*:not(.wl-layer){position:relative;z-index:1}
+/* ---- Muncul: tirai terbuka dari atas (ref kebab .rv) ---- */
+html.mf-on .rv{opacity:0;translate:0 28px;transition:opacity .7s ease calc(var(--i,0)*.07s),translate .8s cubic-bezier(.2,.9,.25,1) calc(var(--i,0)*.07s)}
+html.mf-on .rv.in{opacity:1;translate:0 0}
+/* ---- Teks runway besar yang bergeser saat scroll (ref amel #secret) ---- */
+.lookbook-section{position:relative;overflow:hidden}
+.runway{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;justify-content:space-around;pointer-events:none;overflow:hidden}
+.runway p{margin:0;white-space:nowrap;font:800 clamp(80px,14vw,220px)/1 var(--display);letter-spacing:-.04em;color:transparent;-webkit-text-stroke:2px #ff9fc833}
+.runway p:nth-child(2){-webkit-text-stroke-color:#ffffff1c}
+.lookbook-section>*:not(.runway){position:relative;z-index:1}
+/* ---- Kursor cincin + bintang melayang ---- */
+#cursorRing{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:2px solid #ff9fc8;border-radius:50%;pointer-events:none;z-index:300;opacity:0;display:grid;place-items:center;font:800 9px var(--font);letter-spacing:.14em;color:#25111d;transition:width .25s,height .25s,margin .25s,background .25s,opacity .25s}
+body.has-ring #cursorRing{opacity:1}#cursorRing.hov{width:56px;height:56px;margin:-28px 0 0 -28px;background:#ff9fc8e6}
+.mf-star{position:absolute;pointer-events:none;color:#ff9fc8;z-index:0;line-height:1}
+.closer{position:relative;overflow:hidden}
+@media(hover:none){#cursorRing{display:none}}
+@media(prefers-reduced-motion:reduce){.sw .wi{transform:none!important}.sw em::before{transform:skewX(-7deg) scaleX(1)!important}.rv{clip-path:none!important;translate:none!important;scale:none!important}.hero-halo{animation:none}.shop-photo,.gallery-tile{rotate:none}}
+
+.hero-headline{top:42%}.wl-layer svg{will-change:auto}.runway p span{display:inline-block;will-change:transform}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1!important;translate:none!important}}
+
+.hero-halo,.hero-ring,#cursorRing{display:none!important}
+/* ---- Galeri V6: kolase asimetris, latar blush, tiap foto punya warna sendiri ---- */
+.gallery-section{background:#ffe3ee;color:#2a0f1e}
+.gallery-section .section-title h2{color:#2a0f1e}.gallery-section .section-title p{color:#6b4a5a}.gallery-section .small-section-kicker{color:#a23a6b}.gallery-section .small-section-kicker>span{background:#a23a6b}
+.gallery-section .section-title h2 em{color:#ffd1e3!important;-webkit-text-fill-color:#ffd1e3!important}.gallery-section .section-title h2 em::before{background:#2a0f1e}
+.gallery-section .wl-layer{--wl-a:#ff6f9d26;--wl-b:#ffffff80;--wl-c:#ff9fc833}
+.gallery-grid{grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(130px,14vw,190px);gap:16px}
+.gallery-tile{--tint:#ffb3d1;min-height:0;border:0;border-radius:26px;padding:0;background:var(--tint);box-shadow:0 18px 40px -22px #7a2a50;display:block}
+.gallery-tile:nth-child(1){grid-column:1/5;grid-row:1/4;border-radius:999px 999px 26px 26px;--tint:#ffb3d1}
+.gallery-tile:nth-child(2){grid-column:5/9;grid-row:1/3;--tint:#c9c3ff}
+.gallery-tile:nth-child(3){grid-column:9/13;grid-row:1/4;border-radius:999px 999px 26px 26px;--tint:#ffe9a8}
+.gallery-tile:nth-child(4){grid-column:1/5;grid-row:4/6;--tint:#b8efcf}
+.gallery-tile:nth-child(5){grid-column:5/9;grid-row:3/6;--tint:#d8c2ff}
+.gallery-tile:nth-child(6){grid-column:9/13;grid-row:4/6;--tint:#ffc7de}
+.gallery-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;transition:transform .8s cubic-bezier(.2,.9,.25,1)}
+.gallery-tile:hover{transform:none;border-color:transparent}.gallery-tile:hover img{transform:scale(1.07)}
+.gallery-tile>span{position:absolute;left:14px;right:14px;bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-radius:999px;background:#fff8fbe6;color:#2a0f1e;font:800 13px var(--font);backdrop-filter:blur(8px)}
+.gallery-tile>span b{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#2a0f1e;color:#ffd1e3;font-size:12px;transition:transform .4s}.gallery-tile:hover>span b{transform:rotate(45deg)}
+@media(max-width:760px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px;gap:10px}
+.gallery-tile:nth-child(n){grid-column:auto;grid-row:span 2;border-radius:22px}.gallery-tile:nth-child(1),.gallery-tile:nth-child(4){grid-row:span 3}.gallery-tile>span{left:8px;right:8px;bottom:8px;padding:7px 10px;font-size:11px}}
+/* ---- Katalog: foto berlatar warna per look, zoom halus ---- */
+.shop-card:nth-child(6n+1) .shop-photo{background:radial-gradient(circle at 50% 40%,#ff9fc866,#2a1630 75%)}
+.shop-card:nth-child(6n+2) .shop-photo{background:radial-gradient(circle at 50% 40%,#8d9bff55,#1d1838 75%)}
+.shop-card:nth-child(6n+3) .shop-photo{background:radial-gradient(circle at 50% 40%,#e7c36a55,#2a2118 75%)}
+.shop-card:nth-child(6n+4) .shop-photo{background:radial-gradient(circle at 50% 40%,#5fd6a055,#14281f 75%)}
+.shop-card:nth-child(6n+5) .shop-photo{background:radial-gradient(circle at 50% 40%,#9a6bff55,#1d1430 75%)}
+.shop-card:nth-child(6n) .shop-photo{background:radial-gradient(circle at 50% 40%,#ff8fbf55,#2a1630 75%)}
+.shop-photo img{transition:transform .8s cubic-bezier(.2,.9,.25,1)}.shop-card:hover .shop-photo img{transform:scale(1.06) rotate(-1.5deg)}
+.shop-card{transition:transform .35s cubic-bezier(.2,.9,.25,1),box-shadow .35s}.shop-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -24px #ff6f9d88}
+.steps li{transition:transform .35s cubic-bezier(.2,.9,.25,1)}.steps li:hover{transform:translateY(-5px)}
+.step-no{font-family:var(--display)!important}
+.gallery-tile>span{box-sizing:border-box;width:auto;right:14px}@media(max-width:760px){.gallery-tile>span{right:8px}}
+/* ---- V6.3: perbaikan section Lookbook ---- */
+.lookbook-section>.runway{position:absolute;inset:0;grid-column:1/-1;grid-row:1/-1;z-index:0}
+.lookbook-section>.wl-layer{position:absolute}
+.lookbook-section>.lookbook-visual,.lookbook-section>.lookbook-text{position:relative;z-index:1}
+.lookbook-section>.lookbook-visual{position:relative}
+.runway p{-webkit-text-stroke:2px #ff9fc81f;font-size:clamp(70px,11vw,170px)}
+.lookbook-section{background:linear-gradient(120deg,#170f24,#2a1534 60%,#1a1022)}
+.lookbook-visual{background:radial-gradient(ellipse at 50% 35%,#ff9fc84d,#2a1534 62%,transparent 90%)}
+.lookbook-halo{display:none}
+.lookbook-visual>img{filter:drop-shadow(0 26px 40px #000a)}
+.lookbook-watermark{display:none}
+.lookbook-features>div{border:1px solid #ffffff1f;border-radius:16px;padding:14px 16px;background:#ffffff0a;border-bottom:1px solid #ffffff1f;transition:background .3s,transform .3s}
+.lookbook-features>div:hover{background:#ffffff14;transform:translateX(4px)}
+.lookbook-text h2{font-size:clamp(40px,4.6vw,68px)}
+
+/* ---- V6.3: Lokasi baru — peta lebar, kartu alamat melayang ---- */
+.location-grid{display:block;position:relative;background:none;border:0;border-radius:0;box-shadow:none;min-height:0;overflow:visible}
+.location-grid .map-box{position:relative;width:100%;height:clamp(380px,42vw,500px);border-radius:32px;overflow:hidden;box-shadow:0 36px 70px -36px #8a2f5c;border:6px solid #fff;background:#ffd9e8}
+.location-grid .map-box iframe{position:absolute;left:0;top:-110px;width:100%;height:calc(100% + 220px);border:0;filter:saturate(.85) contrast(1.02)}
+.location-grid .location-copy{position:absolute;z-index:3;left:clamp(16px,3vw,36px);bottom:clamp(16px,3vw,36px);width:min(400px,calc(100% - 32px));padding:28px 28px 26px;border-radius:26px;background:#2a0f1e;color:#fff;box-shadow:0 24px 50px -20px #000a}
+.location-copy .address-no{display:inline-block;padding:5px 12px;border-radius:99px;background:#ff9fc8;color:#2a0f1e;font:800 10px var(--font);letter-spacing:.14em}
+.location-copy h3{font:800 clamp(28px,3vw,38px)/1 var(--display);letter-spacing:-.03em;margin:14px 0 12px}
+.location-copy p{font-size:13px;line-height:1.7;color:#e6cfdb;margin:0 0 20px}.location-copy p b{color:#fff}
+.location-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.contact-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+.contact-card{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:22px;background:#fff;border:1px solid #ffc7de;transition:transform .35s cubic-bezier(.2,.9,.25,1),background .3s,color .3s,box-shadow .3s}
+.contact-card:hover{transform:translateY(-5px);background:#2a0f1e;color:#fff;box-shadow:0 20px 40px -22px #8a2f5c}
+.contact-card:hover small{color:#ffc7de}.contact-card:hover .cc-ico{background:#ff9fc8;color:#2a0f1e}
+@media(max-width:860px){.location-grid .location-copy{position:relative;left:auto;bottom:auto;width:auto;margin:-48px 14px 0}.location-grid .map-box{height:340px}.contact-cards{grid-template-columns:1fr}}
+@media(max-width:860px){.location-grid{display:flex;flex-direction:column}.location-grid .map-box{order:1}.location-grid .location-copy{order:2;margin:-44px 14px 0;z-index:3}}
